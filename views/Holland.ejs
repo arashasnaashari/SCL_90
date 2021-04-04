@@ -1,0 +1,320 @@
+<%- include('templatetest'); -%>
+
+<body>
+  <!-- <header class="header"></header> -->
+  <% if(user.answerDataHolland.length > 0){ %>
+  <script>
+    window.location.assign("/dashboard");
+  </script>
+  <% } else{ %> <% null %> <% } %>
+  <div class="container" id="test-container">
+    <div id="test" class="justify-center flex-column">
+      <div class="question-container">
+        <i style="font-size: 2.8rem; margin: 0.5rem" class="fa">&#xf022;</i>
+        <h2 id="total-questions">/19</h2>
+        <h2 id="question-number">1</h2>
+        <h2 id="question">متن پرسش</h2>
+      </div>
+
+      <div class="choice-container" id="Choice1">
+        <p class="choice-prefix">1</p>
+        <p class="choice-text" data-number="1" id="choice1"></p>
+      </div>
+      <div class="choice-container" id="Choice2">
+        <p class="choice-prefix">2</p>
+        <p class="choice-text" data-number="2" id="choice2"></p>
+      </div>
+      <div class="choice-container" id="Choice3">
+        <p class="choice-prefix">3</p>
+        <p class="choice-text" data-number="3" id="choice3"></p>
+      </div>
+      <div class="choice-container" id="Choice4">
+        <p class="choice-prefix">4</p>
+        <p class="choice-text" data-number="4" id="choice4"></p>
+      </div>
+      <div class="choice-container" id="Choice5">
+        <p class="choice-prefix">5</p>
+        <p class="choice-text" data-number="5" id="choice5"></p>
+      </div>
+      <div class="choice-container" id="Choice6">
+        <p class="choice-prefix">6</p>
+        <p class="choice-text" data-number="6" id="choice6"></p>
+      </div>
+      <div class="choice-container" id="Choice7">
+        <p class="choice-prefix">7</p>
+        <p class="choice-text" data-number="7" id="choice7"></p>
+      </div>
+      <div class="choice-container" id="Choice8">
+        <p class="choice-prefix">8</p>
+        <p class="choice-text" data-number="8" id="choice8"></p>
+      </div>
+      <div class="choice-container" id="Choice9">
+        <p class="choice-prefix">9</p>
+        <p class="choice-text" data-number="9" id="choice9"></p>
+      </div>
+      <div class="choice-container" id="Choice10">
+        <p class="choice-prefix">10</p>
+        <p class="choice-text" data-number="10" id="choice10"></p>
+      </div>
+      <div class="choice-container" id="Choice11">
+        <p class="choice-prefix">11</p>
+        <p class="choice-text" data-number="11" id="choice11"></p>
+      </div>
+      <div class="choice-container" id="Choice12">
+        <p class="choice-prefix">12</p>
+        <p class="choice-text" data-number="12" id="choice12"></p>
+      </div>
+      <div class="choice-container" id="Choice13">
+        <p class="choice-prefix">13</p>
+        <p class="choice-text" data-number="13" id="choice13"></p>
+      </div>
+      <div class="choice-container" id="Choice14">
+        <p class="choice-prefix">14</p>
+        <p class="choice-text" data-number="14" id="choice14"></p>
+      </div>
+      <table id="table01">
+        <tr>
+          <th>توانایی مکانیکی</th>
+          <th>توانایی علمی</th>
+          <th>توانایی هنری</th>
+          <th>توانایی تدریس</th>
+          <th>توانایی فروشندگی</th>
+          <th>توانایی اداری مالی</th>
+        </tr>
+        <tr>
+          <td>
+            <select
+              name="NumberHalland1"
+              class="option_New"
+              id="NumberHalland1"
+            >
+              <option value="one" class="option_new" id="one11">1</option>
+              <option value="two" class="option_new" id="two21">2</option>
+              <option value="three" class="option_new" id="three31">3</option>
+              <option value="four" class="option_new" id="four41">4</option>
+              <option value="five" class="option_new" id="five51">5</option>
+              <option value="six" class="option_new" id="six61">6</option>
+              <option value="seven" class="option_new" id="seven71">7</option>
+            </select>
+          </td>
+          <td>
+            <select
+              name="NumberHalland2"
+              class="option_New"
+              id="NumberHalland2"
+            >
+              <option value="one" class="option_new" id="one12">1</option>
+              <option value="two" class="option_new" id="two22">2</option>
+              <option value="three" class="option_new" id="three32">3</option>
+              <option value="four" class="option_new" id="four42">4</option>
+              <option value="five" class="option_new" id="five52">5</option>
+              <option value="six" class="option_new" id="six62">6</option>
+              <option value="seven" class="option_new" id="seven72">7</option>
+            </select>
+          </td>
+          <td>
+            <select
+              name="NumberHalland3"
+              class="option_New"
+              id="NumberHalland3"
+            >
+              <option value="one" class="option_new" id="one13">1</option>
+              <option value="two" class="option_new" id="two23">2</option>
+              <option value="three" class="option_new" id="three33">3</option>
+              <option value="four" class="option_new" id="four43">4</option>
+              <option value="five" class="option_new" id="five53">5</option>
+              <option value="six" class="option_new" id="six63">6</option>
+              <option value="seven" class="option_new" id="seven73">7</option>
+            </select>
+          </td>
+          <td>
+            <select
+              name="NumberHalland4"
+              class="option_New"
+              id="NumberHalland4"
+            >
+              <option value="one" class="option_new" id="one14">1</option>
+              <option value="two" class="option_new" id="two24">2</option>
+              <option value="three" class="option_new" id="three34">3</option>
+              <option value="four" class="option_new" id="four44">4</option>
+              <option value="five" class="option_new" id="five54">5</option>
+              <option value="six" class="option_new" id="six64">6</option>
+              <option value="seven" class="option_new" id="seven74">7</option>
+            </select>
+          </td>
+          <td>
+            <select
+              name="NumberHalland5"
+              class="option_New"
+              id="NumberHalland5"
+            >
+              <option value="one" class="option_new" id="one15">1</option>
+              <option value="two" class="option_new" id="two25">2</option>
+              <option value="three" class="option_new" id="three35">3</option>
+              <option value="four" class="option_new" id="four45">4</option>
+              <option value="five" class="option_new" id="five55">5</option>
+              <option value="six" class="option_new" id="six65">6</option>
+              <option value="seven" class="option_new" id="seven75">7</option>
+            </select>
+          </td>
+          <td>
+            <select
+              name="NumberHalland6"
+              class="option_New"
+              id="NumberHalland6"
+            >
+              <option value="one" class="option_new" id="one16">1</option>
+              <option value="two" class="option_new" id="two26">2</option>
+              <option value="three" class="option_new" id="three36">3</option>
+              <option value="four" class="option_new" id="four46">4</option>
+              <option value="five" class="option_new" id="five56">5</option>
+              <option value="six" class="option_new" id="six66">6</option>
+              <option value="seven" class="option_new" id="seven76">7</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>و</td>
+          <td>ج</td>
+          <td>ه</td>
+          <td>الف</td>
+          <td>م</td>
+          <td>ق</td>
+        </tr>
+      </table>
+      <table id="table02">
+        <tr>
+          <th>مهارت‌های دستی</th>
+          <th>مهارت‌های رياضی يا تجربی</th>
+          <th>مهارت‌های نقاشی</th>
+          <th>مهارت‌های دوستی و تعاون</th>
+          <th>مهارت‌های مديريت</th>
+          <th>مهارت‌های امور اداری و مالی</th>
+        </tr>
+        <tr>
+          <td>
+            <select
+              name="NumberHalland_1"
+              class="option_New"
+              id="NumberHalland_1"
+            >
+              <option value="one" class="option_new" id="one_11">1</option>
+              <option value="two" class="option_new" id="two_21">2</option>
+              <option value="three" class="option_new" id="three_31">3</option>
+              <option value="four" class="option_new" id="four_41">4</option>
+              <option value="five" class="option_new" id="five_51">5</option>
+              <option value="six" class="option_new" id="six_61">6</option>
+              <option value="seven" class="option_new" id="seven_71">7</option>
+            </select>
+          </td>
+          <td>
+            <select
+              name="NumberHalland_2"
+              class="option_New"
+              id="NumberHalland_2"
+            >
+              <option value="one" class="option_new" id="one_12">1</option>
+              <option value="two" class="option_new" id="two_22">2</option>
+              <option value="three" class="option_new" id="three_32">3</option>
+              <option value="four" class="option_new" id="four_42">4</option>
+              <option value="five" class="option_new" id="five_52">5</option>
+              <option value="six" class="option_new" id="six_62">6</option>
+              <option value="seven" class="option_new" id="seven_72">7</option>
+            </select>
+          </td>
+          <td>
+            <select
+              name="NumberHalland_3"
+              class="option_New"
+              id="NumberHalland_3"
+            >
+              <option value="one" class="option_new" id="one_13">1</option>
+              <option value="two" class="option_new" id="two_23">2</option>
+              <option value="three" class="option_new" id="three_33">3</option>
+              <option value="four" class="option_new" id="four_43">4</option>
+              <option value="five" class="option_new" id="five_53">5</option>
+              <option value="six" class="option_new" id="six_63">6</option>
+              <option value="seven" class="option_new" id="seven_73">7</option>
+            </select>
+          </td>
+          <td>
+            <select
+              name="NumberHalland_4"
+              class="option_New"
+              id="NumberHalland_4"
+            >
+              <option value="one" class="option_new" id="one_14">1</option>
+              <option value="two" class="option_new" id="two_24">2</option>
+              <option value="three" class="option_new" id="three_34">3</option>
+              <option value="four" class="option_new" id="four_44">4</option>
+              <option value="five" class="option_new" id="five_54">5</option>
+              <option value="six" class="option_new" id="six_64">6</option>
+              <option value="seven" class="option_new" id="seven_74">7</option>
+            </select>
+          </td>
+          <td>
+            <select
+              name="NumberHalland_5"
+              class="option_New"
+              id="NumberHalland_5"
+            >
+              <option value="one" class="option_new" id="one_15">1</option>
+              <option value="two" class="option_new" id="two_25">2</option>
+              <option value="three" class="option_new" id="three_35">3</option>
+              <option value="four" class="option_new" id="four_45">4</option>
+              <option value="five" class="option_new" id="five_55">5</option>
+              <option value="six" class="option_new" id="six_65">6</option>
+              <option value="seven" class="option_new" id="seven_75">7</option>
+            </select>
+          </td>
+          <td>
+            <select
+              name="NumberHalland_6"
+              class="option_New"
+              id="NumberHalland_6"
+            >
+              <option value="one" class="option_new" id="one_16">1</option>
+              <option value="two" class="option_new" id="two_26">2</option>
+              <option value="three" class="option_new" id="three_36">3</option>
+              <option value="four" class="option_new" id="four_46">4</option>
+              <option value="five" class="option_new" id="five_56">5</option>
+              <option value="six" class="option_new" id="six_66">6</option>
+              <option value="seven" class="option_new" id="seven_76">7</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>و</td>
+          <td>ج</td>
+          <td>ه</td>
+          <td>الف</td>
+          <td>م</td>
+          <td>ق</td>
+        </tr>
+      </table>
+
+      <div id="bottomLine">
+        <button class="btn" id="previousQuestionBtn">سؤال قبل</button>
+        <button type="submit" class="btn" id="acceptQuestionBtn">
+          تاييد و ارسال
+        </button>
+        <div id="progressBar">
+          <div id="progressBarFull"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <footer class="footer"></footer>-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../public/script/Holland.js"></script>
+
+  <script>
+    const acceptQuestionBtn = document.getElementById("acceptQuestionBtn");
+
+    acceptQuestionBtn.addEventListener("click", () => {
+      return window.location.assign("/end.html");
+    });
+  </script>
+</body>

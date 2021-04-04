@@ -1,0 +1,135 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.name %></p>
+<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<% if (user.age == 17) { %> <% console.log(user.name); %>
+<a href="/admin" class="btn btn-secondary">admin</a>
+<% } %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">tests</th>
+      <th scope="col">status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><a href="/tests/scl">Scl</a></td>
+      <td>
+        <% if(user.answerDataScl.length > 0){ %>
+        <p>done</p>
+        <% } else{ %>
+        <p>not yet</p>
+        <% } %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td><a href="/tests/AMQ">AMQ</a></td>
+      <td>
+        <% if(user.answerDataAMQ.length > 0){ %>
+        <p>done</p>
+        <% } else{ %>
+        <p>not yet</p>
+        <% } %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td><a href="/tests/BISI">BISI</a></td>
+      <td>
+        <% if(user.answerDataBISI.length > 0){ %>
+        <p>done</p>
+        <% } else{ %>
+        <p>not yet</p>
+        <% } %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td><a href="/tests/CT">CT</a></td>
+      <td>
+        <% if(user.answerDataCT.length > 0){ %>
+        <p>done</p>
+        <% } else{ %>
+        <p>not yet</p>
+        <% } %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td><a href="/tests/EQI">EQI</a></td>
+      <td>
+        <% if(user.answerDataEQI.length > 0){ %>
+        <p>done</p>
+        <% } else{ %>
+        <p>not yet</p>
+        <% } %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td><a href="/tests/Holland">Holland</a></td>
+      <td>
+        <% if(user.answerDataHolland.length > 0){ %>
+        <p>done</p>
+        <% } else{ %>
+        <p>not yet</p>
+        <% } %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td><a href="/tests/MBTI">MBTI</a></td>
+      <td>
+        <% if(user.answerDataMBTI.length > 0){ %>
+        <p>done</p>
+        <% } else{ %>
+        <p>not yet</p>
+        <% } %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td><a href="/tests/NEOFFI">NEOFFI</a></td>
+      <td>
+        <% if(user.answerDataNEOFFI.length > 0){ %>
+        <p>done</p>
+        <% } else{ %>
+        <p>not yet</p>
+        <% } %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td><a href="/tests/NEOPIR">NEOPIR</a></td>
+      <td>
+        <% if(user.answerDataNEOPIR.length > 0){ %>
+        <p>done</p>
+        <% } else{ %>
+        <p>not yet</p>
+        <% } %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">10</th>
+      <td><a href="/tests/pwb">PWB</a></td>
+      <td>
+        <% if(user.answerDataPWB.length > 0){ %>
+        <p>done</p>
+        <% } else{ %>
+        <p>not yet</p>
+        <% } %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- <p class="privateP" style="display: none"><%= user._id %></p>
+
+<script>
+  sessionStorage.setItem(
+    "userId",
+    document.querySelector(".privateP").innerHTML
+  );
+</script> -->

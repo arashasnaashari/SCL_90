@@ -1,0 +1,22 @@
+<%- include('template'); -%>
+
+<div class="container">
+  <div id="end" class="flex-center flex-column">
+    <form>
+      <h1 id="logPageHeader">اطلاعات کاربر</h1>
+      <p id="logPageP1">
+        .لطفاً پیش از آغاز آزمون مشخصات مورد نیاز را کامل نمایید
+      </p>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="رمز ورود"
+      />
+      <input type="phone" name="phone" id="phone" placeholder="شماره تلفن" />
+      <button type="submit" class="btn" id="saveDataBtn">تأیید و ادامه</button>
+    </form>
+  </div>
+</div>
+
+<script src="/public/script/login.js"></script>

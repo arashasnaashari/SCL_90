@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>admin</title>
+    <script src="/public/script/filesaver.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+  </head>
+
+  <body>
+    <h1>وارد کردن دیتا کاربران</h1>
+    <div class="conatiner mt-5">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <input
+            class="form-control"
+            type="file"
+            id="input"
+            accept=".xls,.xlsx"
+          />
+          <input type="text" id="nameOfExam" placeholder="اسم آزمون " />
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary" id="button">submit</button>
+        </div>
+        <div class="col-md-12">
+          <pre id="jsondata"></pre>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <h1>گرفتن نتایج سازمانی</h1>
+    <input type="date" id="birthday" name="birthday" />
+    <input type="submit" class="sub" />
+    <hr />
+    <h1>گرفتن نتایج فردی</h1>
+    <input type="date" id="birthday2" name="birthday" />
+    <input type="submit" class="sub2" />
+
+    <!--سازمانی-->
+    <script>
+      document.querySelector(".sub").addEventListener("click", (e) => {
+        e.preventDefault();
+        const date11 = document.querySelector("#birthday").value;
+        const usersPointsDataArray = [];
+        console.log(date11);
+
+        fetch(`/admin/update-answer-nationalcode/${date11}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data.msg[0]);
+            let GSIV;
+            let PStV;
+            data.msg.map((e) => {
+              usersPointsDataArray.push({
+                name: e.name,
+                age: e.age,
+                gender: e.gender,
+                GSI:
+                  (e.answerDataScl.reduce((a, b) => {
+                    return a + b;
+                  }, 0) /
+                    90) *
+                  100,
+                PSt: 90 - e.answerDataScl.filter((a) => a == 0).length,
+                So:
+                  e.answerDataScl[0] +
+                  e.answerDataScl[3] +
+                  e.answerDataScl[11] +
+                  e.answerDataScl[26] +
+                  e.answerDataScl[39] +
+                  e.answerDataScl[41] +
+                  e.answerDataScl[47] +
+                  e.answerDataScl[48] +
+                  e.answerDataScl[51] +
+                  e.answerDataScl[52] +
+                  e.answerDataScl[55] +
+                  e.answerDataScl[58] / 12,
+                Oc:
+                  e.answerDataScl[2] +
+                  e.answerDataScl[8] +
+                  e.answerDataScl[9] +
+                  e.answerDataScl[27] +
+                  e.answerDataScl[37] +
+                  e.answerDataScl[44] +
+                  e.answerDataScl[45] +
+                  e.answerDataScl[50] +
+                  e.answerDataScl[54] +
+                  e.answerDataScl[64] / 10,
+                Is:
+                  e.answerDataScl[5] +
+                  e.answerDataScl[20] +
+                  e.answerDataScl[33] +
+                  e.answerDataScl[35] +
+                  e.answerDataScl[36] +
+                  e.answerDataScl[40] +
+                  e.answerDataScl[60] +
+                  e.answerDataScl[68] +
+                  e.answerDataScl[72] / 9,
+                Dp:
+                  e.answerDataScl[4] +
+                  e.answerDataScl[13] +
+                  e.answerDataScl[14] +
+                  e.answerDataScl[19] +
+                  e.answerDataScl[21] +
+                  e.answerDataScl[25] +
+                  e.answerDataScl[28] +
+                  e.answerDataScl[29] +
+                  e.answerDataScl[30] +
+                  e.answerDataScl[31] +
+                  e.answerDataScl[53] +
+                  e.answerDataScl[70] +
+                  e.answerDataScl[78] / 13,
+                An:
+                  e.answerDataScl[1] +
+                  e.answerDataScl[16] +
+                  e.answerDataScl[22] +
+                  e.answerDataScl[32] +
+                  e.answerDataScl[38] +
+                  e.answerDataScl[56] +
+                  e.answerDataScl[71] +
+                  e.answerDataScl[77] +
+                  e.answerDataScl[79] +
+                  e.answerDataScl[85] / 10,
+                Ag:
+                  e.answerDataScl[10] +
+                  e.answerDataScl[23] +
+                  e.answerDataScl[62] +
+                  e.answerDataScl[66] +
+                  e.answerDataScl[73] +
+                  e.answerDataScl[80] / 6,
+                Ph:
+                  e.answerDataScl[12] +
+                  e.answerDataScl[24] +
+                  e.answerDataScl[46] +
+                  e.answerDataScl[49] +
+                  e.answerDataScl[69] +
+                  e.answerDataScl[74] +
+                  e.answerDataScl[81] / 7,
+                Pa:
+                  e.answerDataScl[7] +
+                  e.answerDataScl[17] +
+                  e.answerDataScl[42] +
+                  e.answerDataScl[67] +
+                  e.answerDataScl[75] +
+                  e.answerDataScl[82] / 6,
+                Ps:
+                  e.answerDataScl[6] +
+                  e.answerDataScl[15] +
+                  e.answerDataScl[34] +
+                  e.answerDataScl[61] +
+                  e.answerDataScl[76] +
+                  e.answerDataScl[83] +
+                  e.answerDataScl[84] +
+                  e.answerDataScl[86] +
+                  e.answerDataScl[87] +
+                  e.answerDataScl[89] / 10,
+                autonomy:
+                  e.answerDataRiff[2 - 1] +
+                  e.answerDataRiff[8 - 1] +
+                  e.answerDataRiff[14 - 1] +
+                  e.answerDataRiff[20 - 1] +
+                  e.answerDataRiff[26 - 1] +
+                  e.answerDataRiff[32 - 1] +
+                  e.answerDataRiff[38 - 1] +
+                  e.answerDataRiff[44 - 1] +
+                  e.answerDataRiff[50 - 1] +
+                  e.answerDataRiff[56 - 1] +
+                  e.answerDataRiff[62 - 1] +
+                  e.answerDataRiff[68 - 1] +
+                  e.answerDataRiff[74 - 1] +
+                  e.answerDataRiff[80 - 1],
+                environmentalMastery:
+                  e.answerDataRiff[3 - 1] +
+                  e.answerDataRiff[9 - 1] +
+                  e.answerDataRiff[15 - 1] +
+                  e.answerDataRiff[21 - 1] +
+                  e.answerDataRiff[27 - 1] +
+                  e.answerDataRiff[33 - 1] +
+                  e.answerDataRiff[39 - 1] +
+                  e.answerDataRiff[45 - 1] +
+                  e.answerDataRiff[51 - 1] +
+                  e.answerDataRiff[57 - 1] +
+                  e.answerDataRiff[63 - 1] +
+                  e.answerDataRiff[69 - 1] +
+                  e.answerDataRiff[75 - 1] +
+                  e.answerDataRiff[81 - 1],
+                personalGrowth:
+                  e.answerDataRiff[4 - 1] +
+                  e.answerDataRiff[10 - 1] +
+                  e.answerDataRiff[16 - 1] +
+                  e.answerDataRiff[22 - 1] +
+                  e.answerDataRiff[28 - 1] +
+                  e.answerDataRiff[34 - 1] +
+                  e.answerDataRiff[40 - 1] +
+                  e.answerDataRiff[46 - 1] +
+                  e.answerDataRiff[52 - 1] +
+                  e.answerDataRiff[58 - 1] +
+                  e.answerDataRiff[64 - 1] +
+                  e.answerDataRiff[70 - 1] +
+                  e.answerDataRiff[76 - 1] +
+                  e.answerDataRiff[82 - 1],
+                positiveRelations:
+                  e.answerDataRiff[1 - 1] +
+                  e.answerDataRiff[7 - 1] +
+                  e.answerDataRiff[13 - 1] +
+                  e.answerDataRiff[19 - 1] +
+                  e.answerDataRiff[25 - 1] +
+                  e.answerDataRiff[31 - 1] +
+                  e.answerDataRiff[37 - 1] +
+                  e.answerDataRiff[43 - 1] +
+                  e.answerDataRiff[49 - 1] +
+                  e.answerDataRiff[55 - 1] +
+                  e.answerDataRiff[61 - 1] +
+                  e.answerDataRiff[67 - 1] +
+                  e.answerDataRiff[73 - 1] +
+                  e.answerDataRiff[79 - 1],
+                purposeInLife:
+                  e.answerDataRiff[5 - 1] +
+                  e.answerDataRiff[11 - 1] +
+                  e.answerDataRiff[17 - 1] +
+                  e.answerDataRiff[23 - 1] +
+                  e.answerDataRiff[29 - 1] +
+                  e.answerDataRiff[35 - 1] +
+                  e.answerDataRiff[41 - 1] +
+                  e.answerDataRiff[47 - 1] +
+                  e.answerDataRiff[53 - 1] +
+                  e.answerDataRiff[59 - 1] +
+                  e.answerDataRiff[65 - 1] +
+                  e.answerDataRiff[71 - 1] +
+                  e.answerDataRiff[77 - 1] +
+                  e.answerDataRiff[83 - 1],
+                selfAcceptance:
+                  e.answerDataRiff[6 - 1] +
+                  e.answerDataRiff[12 - 1] +
+                  e.answerDataRiff[18 - 1] +
+                  e.answerDataRiff[24 - 1] +
+                  e.answerDataRiff[30 - 1] +
+                  e.answerDataRiff[36 - 1] +
+                  e.answerDataRiff[42 - 1] +
+                  e.answerDataRiff[48 - 1] +
+                  e.answerDataRiff[54 - 1] +
+                  e.answerDataRiff[60 - 1] +
+                  e.answerDataRiff[66 - 1] +
+                  e.answerDataRiff[72 - 1] +
+                  e.answerDataRiff[78 - 1] +
+                  e.answerDataRiff[84 - 1],
+              });
+            });
+
+            usersPointsDataArray.map((e) => {
+              return (e.PSDI = e.GSI / e.PSt);
+            });
+
+            const EXCEL_TYPE =
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+            const EXCEL_EXTENSION = ".xlsx";
+
+            const worksheet = XLSX.utils.json_to_sheet(usersPointsDataArray);
+
+            const workbook = {
+              Sheets: {
+                data: worksheet,
+              },
+              SheetNames: ["data"],
+            };
+
+            const excelBuffer = XLSX.write(workbook, {
+              bookType: "xlsx",
+              type: "array",
+            });
+
+            console.log(excelBuffer);
+            saveAsExcel(excelBuffer, "arash");
+
+            function saveAsExcel(buffer, filename) {
+              const data = new Blob([buffer], { type: EXCEL_TYPE });
+              saveAs(data, filename + EXCEL_EXTENSION);
+            }
+          })
+          .catch((err) => console.log(err));
+      });
+    </script>
+    <!--فردی-->
+    <script>
+      document.querySelector(".sub2").addEventListener("click", (e) => {
+        e.preventDefault();
+        const date11 = document.querySelector("#birthday2").value;
+        const usersPointsDataArray = [];
+        console.log(date11);
+
+        fetch(`/admin/update-answer-fardi/${date11}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data.msg[0]);
+            let GSIV;
+            let PStV;
+            data.msg.map((e) => {
+              usersPointsDataArray.push({
+                name: e.name,
+                age: e.age,
+                gender: e.gender,
+                GSI:
+                  (e.answerDataScl.reduce((a, b) => {
+                    return a + b;
+                  }, 0) /
+                    90) *
+                  100,
+                PSt: 90 - e.answerDataScl.filter((a) => a == 0).length,
+                So:
+                  e.answerDataScl[0] +
+                  e.answerDataScl[3] +
+                  e.answerDataScl[11] +
+                  e.answerDataScl[26] +
+                  e.answerDataScl[39] +
+                  e.answerDataScl[41] +
+                  e.answerDataScl[47] +
+                  e.answerDataScl[48] +
+                  e.answerDataScl[51] +
+                  e.answerDataScl[52] +
+                  e.answerDataScl[55] +
+                  e.answerDataScl[58] / 12,
+                Oc:
+                  e.answerDataScl[2] +
+                  e.answerDataScl[8] +
+                  e.answerDataScl[9] +
+                  e.answerDataScl[27] +
+                  e.answerDataScl[37] +
+                  e.answerDataScl[44] +
+                  e.answerDataScl[45] +
+                  e.answerDataScl[50] +
+                  e.answerDataScl[54] +
+                  e.answerDataScl[64] / 10,
+                Is:
+                  e.answerDataScl[5] +
+                  e.answerDataScl[20] +
+                  e.answerDataScl[33] +
+                  e.answerDataScl[35] +
+                  e.answerDataScl[36] +
+                  e.answerDataScl[40] +
+                  e.answerDataScl[60] +
+                  e.answerDataScl[68] +
+                  e.answerDataScl[72] / 9,
+                Dp:
+                  e.answerDataScl[4] +
+                  e.answerDataScl[13] +
+                  e.answerDataScl[14] +
+                  e.answerDataScl[19] +
+                  e.answerDataScl[21] +
+                  e.answerDataScl[25] +
+                  e.answerDataScl[28] +
+                  e.answerDataScl[29] +
+                  e.answerDataScl[30] +
+                  e.answerDataScl[31] +
+                  e.answerDataScl[53] +
+                  e.answerDataScl[70] +
+                  e.answerDataScl[78] / 13,
+                An:
+                  e.answerDataScl[1] +
+                  e.answerDataScl[16] +
+                  e.answerDataScl[22] +
+                  e.answerDataScl[32] +
+                  e.answerDataScl[38] +
+                  e.answerDataScl[56] +
+                  e.answerDataScl[71] +
+                  e.answerDataScl[77] +
+                  e.answerDataScl[79] +
+                  e.answerDataScl[85] / 10,
+                Ag:
+                  e.answerDataScl[10] +
+                  e.answerDataScl[23] +
+                  e.answerDataScl[62] +
+                  e.answerDataScl[66] +
+                  e.answerDataScl[73] +
+                  e.answerDataScl[80] / 6,
+                Ph:
+                  e.answerDataScl[12] +
+                  e.answerDataScl[24] +
+                  e.answerDataScl[46] +
+                  e.answerDataScl[49] +
+                  e.answerDataScl[69] +
+                  e.answerDataScl[74] +
+                  e.answerDataScl[81] / 7,
+                Pa:
+                  e.answerDataScl[7] +
+                  e.answerDataScl[17] +
+                  e.answerDataScl[42] +
+                  e.answerDataScl[67] +
+                  e.answerDataScl[75] +
+                  e.answerDataScl[82] / 6,
+                Ps:
+                  e.answerDataScl[6] +
+                  e.answerDataScl[15] +
+                  e.answerDataScl[34] +
+                  e.answerDataScl[61] +
+                  e.answerDataScl[76] +
+                  e.answerDataScl[83] +
+                  e.answerDataScl[84] +
+                  e.answerDataScl[86] +
+                  e.answerDataScl[87] +
+                  e.answerDataScl[89] / 10,
+                autonomy:
+                  e.answerDataRiff[2 - 1] +
+                  e.answerDataRiff[8 - 1] +
+                  e.answerDataRiff[14 - 1] +
+                  e.answerDataRiff[20 - 1] +
+                  e.answerDataRiff[26 - 1] +
+                  e.answerDataRiff[32 - 1] +
+                  e.answerDataRiff[38 - 1] +
+                  e.answerDataRiff[44 - 1] +
+                  e.answerDataRiff[50 - 1] +
+                  e.answerDataRiff[56 - 1] +
+                  e.answerDataRiff[62 - 1] +
+                  e.answerDataRiff[68 - 1] +
+                  e.answerDataRiff[74 - 1] +
+                  e.answerDataRiff[80 - 1],
+                environmentalMastery:
+                  e.answerDataRiff[3 - 1] +
+                  e.answerDataRiff[9 - 1] +
+                  e.answerDataRiff[15 - 1] +
+                  e.answerDataRiff[21 - 1] +
+                  e.answerDataRiff[27 - 1] +
+                  e.answerDataRiff[33 - 1] +
+                  e.answerDataRiff[39 - 1] +
+                  e.answerDataRiff[45 - 1] +
+                  e.answerDataRiff[51 - 1] +
+                  e.answerDataRiff[57 - 1] +
+                  e.answerDataRiff[63 - 1] +
+                  e.answerDataRiff[69 - 1] +
+                  e.answerDataRiff[75 - 1] +
+                  e.answerDataRiff[81 - 1],
+                personalGrowth:
+                  e.answerDataRiff[4 - 1] +
+                  e.answerDataRiff[10 - 1] +
+                  e.answerDataRiff[16 - 1] +
+                  e.answerDataRiff[22 - 1] +
+                  e.answerDataRiff[28 - 1] +
+                  e.answerDataRiff[34 - 1] +
+                  e.answerDataRiff[40 - 1] +
+                  e.answerDataRiff[46 - 1] +
+                  e.answerDataRiff[52 - 1] +
+                  e.answerDataRiff[58 - 1] +
+                  e.answerDataRiff[64 - 1] +
+                  e.answerDataRiff[70 - 1] +
+                  e.answerDataRiff[76 - 1] +
+                  e.answerDataRiff[82 - 1],
+                positiveRelations:
+                  e.answerDataRiff[1 - 1] +
+                  e.answerDataRiff[7 - 1] +
+                  e.answerDataRiff[13 - 1] +
+                  e.answerDataRiff[19 - 1] +
+                  e.answerDataRiff[25 - 1] +
+                  e.answerDataRiff[31 - 1] +
+                  e.answerDataRiff[37 - 1] +
+                  e.answerDataRiff[43 - 1] +
+                  e.answerDataRiff[49 - 1] +
+                  e.answerDataRiff[55 - 1] +
+                  e.answerDataRiff[61 - 1] +
+                  e.answerDataRiff[67 - 1] +
+                  e.answerDataRiff[73 - 1] +
+                  e.answerDataRiff[79 - 1],
+                purposeInLife:
+                  e.answerDataRiff[5 - 1] +
+                  e.answerDataRiff[11 - 1] +
+                  e.answerDataRiff[17 - 1] +
+                  e.answerDataRiff[23 - 1] +
+                  e.answerDataRiff[29 - 1] +
+                  e.answerDataRiff[35 - 1] +
+                  e.answerDataRiff[41 - 1] +
+                  e.answerDataRiff[47 - 1] +
+                  e.answerDataRiff[53 - 1] +
+                  e.answerDataRiff[59 - 1] +
+                  e.answerDataRiff[65 - 1] +
+                  e.answerDataRiff[71 - 1] +
+                  e.answerDataRiff[77 - 1] +
+                  e.answerDataRiff[83 - 1],
+                selfAcceptance:
+                  e.answerDataRiff[6 - 1] +
+                  e.answerDataRiff[12 - 1] +
+                  e.answerDataRiff[18 - 1] +
+                  e.answerDataRiff[24 - 1] +
+                  e.answerDataRiff[30 - 1] +
+                  e.answerDataRiff[36 - 1] +
+                  e.answerDataRiff[42 - 1] +
+                  e.answerDataRiff[48 - 1] +
+                  e.answerDataRiff[54 - 1] +
+                  e.answerDataRiff[60 - 1] +
+                  e.answerDataRiff[66 - 1] +
+                  e.answerDataRiff[72 - 1] +
+                  e.answerDataRiff[78 - 1] +
+                  e.answerDataRiff[84 - 1],
+              });
+            });
+
+            usersPointsDataArray.map((e) => {
+              return (e.PSDI = e.GSI / e.PSt);
+            });
+
+            const EXCEL_TYPE =
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+            const EXCEL_EXTENSION = ".xlsx";
+
+            const worksheet = XLSX.utils.json_to_sheet(usersPointsDataArray);
+
+            const workbook = {
+              Sheets: {
+                data: worksheet,
+              },
+              SheetNames: ["data"],
+            };
+
+            const excelBuffer = XLSX.write(workbook, {
+              bookType: "xlsx",
+              type: "array",
+            });
+
+            console.log(excelBuffer);
+            saveAsExcel(excelBuffer, "arash");
+
+            function saveAsExcel(buffer, filename) {
+              const data = new Blob([buffer], { type: EXCEL_TYPE });
+              saveAs(data, filename + EXCEL_EXTENSION);
+            }
+          })
+          .catch((err) => console.log(err));
+      });
+    </script>
+    <!-- وارد کردن دیتا -->
+    <script>
+      let selectedFile;
+      console.log(window.XLSX);
+      document.getElementById("input").addEventListener("change", (event) => {
+        selectedFile = event.target.files[0];
+      });
+
+      let data = [
+        {
+          name: "jayanth",
+          data: "scd",
+          abc: "sdef",
+        },
+      ];
+
+      document.getElementById("button").addEventListener("click", () => {
+        XLSX.utils.json_to_sheet(data, "out.xlsx");
+        if (selectedFile) {
+          let fileReader = new FileReader();
+          fileReader.readAsBinaryString(selectedFile);
+          fileReader.onload = (event) => {
+            let data = event.target.result;
+            let workbook = XLSX.read(data, { type: "binary" });
+            console.log(workbook);
+            workbook.SheetNames.forEach((sheet) => {
+              let rowObject = XLSX.utils.sheet_to_row_object_array(
+                workbook.Sheets[sheet]
+              );
+
+              rowObject.map((e) => {
+                return (
+                  (e.array = []),
+                  (e.nameOfExam = document.querySelector("#nameOfExam").value),
+                  (e.answerDataRiff = [])
+                );
+              });
+              console.log(rowObject);
+
+              fetch("/admin/insert", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  users: rowObject,
+                }),
+              })
+                .then((res) => res.json())
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err));
+            });
+          };
+        }
+      });
+    </script>
+  </body>
+</html>

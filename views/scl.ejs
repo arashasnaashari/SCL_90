@@ -1,0 +1,50 @@
+<%- include('templatetest'); -%>
+
+  <body>
+    <% if(user.answerDataScl.length > 0){ %>
+    <script>
+      window.location.assign("/dashboard");
+    </script>
+   <% } else{ %> <% null %> <% } %>
+    <div class="container" id="test-container">
+      <div id="test" class="justify-center flex-column">
+        <div class="question-container">
+          <i style="font-size: 2.8rem; margin: 0.5rem" class="fa">&#xf022;</i>
+          <h2 id="total-questions">/90</h2>
+          <h2 id="question-number">1</h2>
+          <h2 id="question">متن پرسش</h2>
+        </div>
+
+        <div class="choice-container">
+          <p class="choice-prefix">1</p>
+          <p class="choice-text" data-number="1" id="choice1">به هیچ وجه</p>
+        </div>
+        <div class="choice-container">
+          <p class="choice-prefix">2</p>
+          <p class="choice-text" data-number="2" id="choice2">اندکی</p>
+        </div>
+        <div class="choice-container">
+          <p class="choice-prefix">3</p>
+          <p class="choice-text" data-number="3" id="choice3">در حد متوسط</p>
+        </div>
+        <div class="choice-container">
+          <p class="choice-prefix">4</p>
+          <p class="choice-text" data-number="4" id="choice4">تا حد زیادی</p>
+        </div>
+        <div class="choice-container">
+          <p class="choice-prefix">5</p>
+          <p class="choice-text" data-number="5" id="choice5">کاملاً</p>
+        </div>
+
+        <div id="bottomLine">
+          <button class="btn" id="previousQuestionBtn">سؤال قبل</button>
+          <div id="progressBar">
+            <div id="progressBarFull"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../public/script/scl.js"></script>
+  </body>
+

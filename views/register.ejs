@@ -1,0 +1,43 @@
+<%- include('template'); -%>
+
+<div class="container">
+  <div id="end" class="flex-center flex-column">
+    <form action="">
+      <h1 id="signPageHeader">اطلاعات کاربر</h1>
+      <p id="signPage1">
+        .لطفاً پیش از آغاز آزمون مشخصات مورد نیاز را کامل نمایید
+      </p>
+
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="نام و نام خانوادگی"
+      />
+      <input type="text" name="phone" id="phone" placeholder="شماره تلفن" />
+      <input
+        type="text"
+        name="nationalcode"
+        id="nationalcode"
+        placeholder="کد ملی"
+      />
+
+      <select name="gender" id="gender" aria-placeholder="جنسیت">
+        <option value="آقا" class="option" id="genderM">آقا</option>
+        <option value="خانم" class="option" id="genderF">خانم</option>
+      </select>
+
+      <input type="number" name="age" id="age" placeholder="سن" />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="رمز ورود"
+      />
+
+      <button type="submit" class="btn" id="saveDataBtn">تأیید و ادامه</button>
+    </form>
+  </div>
+</div>
+
+<script src="/public/script/register.js"></script>
