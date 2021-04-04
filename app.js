@@ -16,11 +16,6 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false },
   () => console.log("Connect to DB")
 );
-// mongoose.connect(
-//   "mongodb://worldtes_arashagha:c11kR8buRAZ1@localhost:27017/worldtes_arashaghad",
-//   { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false },
-//   () => console.log("Connect to DB")
-// );
 
 // EJS
 app.use(expressLayouts);
