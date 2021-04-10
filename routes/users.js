@@ -54,12 +54,34 @@ router.post("/login", function (req, res, next) {
   })(req, res, next);
 });
 
-
 // Logout
 router.get("/logout", (req, res) => {
   req.logout();
   req.flash("success_msg", "You are logged out");
-  res.redirect("/users/login");
+  res.redirect("/");
 });
 
+//update
+router.patch("/update", async (req, res) => {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const UpdatedUser = await User.findOneAndUpdate(
+      { phone: req.user.phone },
+      {
+        $set: {
+          name: req.body.name,
+          gender: req.body.gender,
+          password: hashedPassword,
+          age: req.body.age,
+          nationalcode: req.body.nationalcode,
+        },
+      },
+      { upsert: true, new: true, multi: true }
+    );
+    await UpdatedUser.save();
+    res.status(200).json({ ok: true });
+  } catch (error) {
+    res.status(400).json({ ok: error });
+  }
+});
 module.exports = router;

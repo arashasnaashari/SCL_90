@@ -54,6 +54,9 @@ app.use("/users", require("./routes/users.js"));
 app.use("/tests", require("./routes/tests.js"));
 app.use("/admin", require("./routes/admin.js"));
 app.use("/public", express.static("public"));
+app.use(function (req, res, next) {
+  res.status(404).render("404");
+});
 
 const PORT = process.env.PORT || 5000;
 

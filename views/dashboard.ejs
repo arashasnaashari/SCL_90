@@ -1,135 +1,909 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= user.name %></p>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
-<% if (user.password == "$2a$10$5k9gEOfPWII/cvgnQIyRcuTqmenN12TnSbnfXHu3TWqflRmmqi6S2") { %> <% console.log(user.name); %>
-<a href="/admin" class="btn btn-secondary">admin</a>
-<% } %>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">tests</th>
-      <th scope="col">status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td><a href="/tests/scl">Scl</a></td>
-      <td>
-        <% if(user.answerDataScl.length > 0){ %>
-        <p>done</p>
-        <% } else{ %>
-        <p>not yet</p>
-        <% } %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td><a href="/tests/AMQ">AMQ</a></td>
-      <td>
-        <% if(user.answerDataAMQ.length > 0){ %>
-        <p>done</p>
-        <% } else{ %>
-        <p>not yet</p>
-        <% } %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td><a href="/tests/BISI">BISI</a></td>
-      <td>
-        <% if(user.answerDataBISI.length > 0){ %>
-        <p>done</p>
-        <% } else{ %>
-        <p>not yet</p>
-        <% } %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td><a href="/tests/CT">CT</a></td>
-      <td>
-        <% if(user.answerDataCT.length > 0){ %>
-        <p>done</p>
-        <% } else{ %>
-        <p>not yet</p>
-        <% } %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td><a href="/tests/EQI">EQI</a></td>
-      <td>
-        <% if(user.answerDataEQI.length > 0){ %>
-        <p>done</p>
-        <% } else{ %>
-        <p>not yet</p>
-        <% } %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td><a href="/tests/Holland">Holland</a></td>
-      <td>
-        <% if(user.answerDataHolland.length > 0){ %>
-        <p>done</p>
-        <% } else{ %>
-        <p>not yet</p>
-        <% } %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td><a href="/tests/MBTI">MBTI</a></td>
-      <td>
-        <% if(user.answerDataMBTI.length > 0){ %>
-        <p>done</p>
-        <% } else{ %>
-        <p>not yet</p>
-        <% } %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td><a href="/tests/NEOFFI">NEOFFI</a></td>
-      <td>
-        <% if(user.answerDataNEOFFI.length > 0){ %>
-        <p>done</p>
-        <% } else{ %>
-        <p>not yet</p>
-        <% } %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">9</th>
-      <td><a href="/tests/NEOPIR">NEOPIR</a></td>
-      <td>
-        <% if(user.answerDataNEOPIR.length > 0){ %>
-        <p>done</p>
-        <% } else{ %>
-        <p>not yet</p>
-        <% } %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">10</th>
-      <td><a href="/tests/pwb">PWB</a></td>
-      <td>
-        <% if(user.answerDataPWB.length > 0){ %>
-        <p>done</p>
-        <% } else{ %>
-        <p>not yet</p>
-        <% } %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<!-- <p class="privateP" style="display: none"><%= user._id %></p>
+<link rel="stylesheet" href="../public/style/app.css" />
+
+<div class="flex flex-row w-full h-full">
+  <div
+    class="md:w-5/6 bg-gray-200 mx-auto md:mx-0 h-screen w-full flex items-center content-center"
+  >
+    <div class="bg-white w-full overflow-y-scroll h-screen grid gap-4">
+      <div class="flex flex-row-reverse md:w-1/2 w-3/4 bg-gray-100 p-3 mx-auto">
+        <div class="flex flex-col w-4/5">
+          <div class="flex flex-row justify-end">
+            <h1 class="text-lg font-bold">
+              <a href="/tests/scl">SCL آزمون </a>
+            </h1>
+          </div>
+          <div class="flex flex-col w-full">
+            <div class="chevroni" style="direction: rtl">
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+            </div>
+            <div
+              class="w-full bg-gray-300 flex flex-row justify-center chevron_down"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 flex flex-col">
+          <div class="flex flex-row justify-around mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span>90</span>
+          </div>
+          <div class="flex flex-row justify-around">
+            <span class="text-sm">وضعیت</span>
+            <% if(user.answerDataScl.length > 0){ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-bookgram-green"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } else{ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse md:w-1/2 w-3/4 bg-gray-100 p-3 mx-auto">
+        <div class="flex flex-col w-4/5">
+          <div class="flex flex-row justify-end">
+            <h1 class="text-lg font-bold">
+              <a href="/tests/AMQ"> AMQ آزمون</a>
+            </h1>
+          </div>
+          <div class="flex flex-col w-full">
+            <div class="chevroni" style="direction: rtl">
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+            </div>
+            <div
+              class="w-full bg-gray-300 flex flex-row justify-center chevron_down"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 flex flex-col">
+          <div class="flex flex-row justify-around mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span>29</span>
+          </div>
+          <div class="flex flex-row justify-around">
+            <span class="text-sm">وضعیت</span>
+            <% if(user.answerDataAMQ.length > 0){ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-bookgram-green"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } else{ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse md:w-1/2 w-3/4 bg-gray-100 p-3 mx-auto">
+        <div class="flex flex-col w-4/5">
+          <div class="flex flex-row justify-end">
+            <h1 class="text-lg font-bold">
+              <a href="/tests/BISI">BISI آزمون </a>
+            </h1>
+          </div>
+          <div class="flex flex-col w-full">
+            <div class="chevroni" style="direction: rtl">
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+            </div>
+            <div
+              class="w-full bg-gray-300 flex flex-row justify-center chevron_down"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 flex flex-col">
+          <div class="flex flex-row justify-around mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span>40</span>
+          </div>
+          <div class="flex flex-row justify-around">
+            <span class="text-sm">وضعیت</span>
+            <% if(user.answerDataBISI.length > 0){ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-bookgram-green"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } else{ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse md:w-1/2 w-3/4 bg-gray-100 p-3 mx-auto">
+        <div class="flex flex-col w-4/5">
+          <div class="flex flex-row justify-end">
+            <h1 class="text-lg font-bold"><a href="/tests/CT">CT آزمون </a></h1>
+          </div>
+          <div class="flex flex-col w-full">
+            <div class="chevroni" style="direction: rtl">
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+            </div>
+            <div
+              class="w-full bg-gray-300 flex flex-row justify-center chevron_down"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 flex flex-col">
+          <div class="flex flex-row justify-around mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span>60</span>
+          </div>
+          <div class="flex flex-row justify-around">
+            <span class="text-sm">وضعیت</span>
+            <% if(user.answerDataCT.length > 0){ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-bookgram-green"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } else{ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse md:w-1/2 w-3/4 bg-gray-100 p-3 mx-auto">
+        <div class="flex flex-col w-4/5">
+          <div class="flex flex-row justify-end">
+            <h1 class="text-lg font-bold">
+              <a href="/tests/EQI">EQI آزمون</a>
+            </h1>
+          </div>
+          <div class="flex flex-col w-full">
+            <div class="chevroni" style="direction: rtl">
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+            </div>
+            <div
+              class="w-full bg-gray-300 flex flex-row justify-center chevron_down"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 flex flex-col">
+          <div class="flex flex-row justify-around mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span>90</span>
+          </div>
+          <div class="flex flex-row justify-around">
+            <span class="text-sm">وضعیت</span>
+            <% if(user.answerDataEQI.length > 0){ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-bookgram-green"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } else{ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse md:w-1/2 w-3/4 bg-gray-100 p-3 mx-auto">
+        <div class="flex flex-col w-4/5">
+          <div class="flex flex-row justify-end">
+            <h1 class="text-lg font-bold">
+              <a href="/tests/Holland">Holland آزمون</a>
+            </h1>
+          </div>
+          <div class="flex flex-col w-full">
+            <div class="chevroni" style="direction: rtl">
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+            </div>
+            <div
+              class="w-full bg-gray-300 flex flex-row justify-center chevron_down"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 flex flex-col">
+          <div class="flex flex-row justify-around mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span>19</span>
+          </div>
+          <div class="flex flex-row justify-around">
+            <span class="text-sm">وضعیت</span>
+            <% if(user.answerDataHolland.length > 0){ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-bookgram-green"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } else{ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse md:w-1/2 w-3/4 bg-gray-100 p-3 mx-auto">
+        <div class="flex flex-col w-4/5">
+          <div class="flex flex-row justify-end">
+            <h1 class="text-lg font-bold">
+              <a href="/tests/MBTI">MBTI آزمون</a>
+            </h1>
+          </div>
+          <div class="flex flex-col w-full">
+            <div class="chevroni" style="direction: rtl">
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+            </div>
+            <div
+              class="w-full bg-gray-300 flex flex-row justify-center chevron_down"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 flex flex-col">
+          <div class="flex flex-row justify-around mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span>88</span>
+          </div>
+          <div class="flex flex-row justify-around">
+            <span class="text-sm">وضعیت</span>
+            <% if(user.answerDataMBTI.length > 0){ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-bookgram-green"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } else{ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse md:w-1/2 w-3/4 bg-gray-100 p-3 mx-auto">
+        <div class="flex flex-col w-4/5">
+          <div class="flex flex-row justify-end">
+            <h1 class="text-lg font-bold">
+              <a href="/tests/NEOFFI">NEOFFI آزمون</a>
+            </h1>
+          </div>
+          <div class="flex flex-col w-full">
+            <div class="chevroni" style="direction: rtl">
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+            </div>
+            <div
+              class="w-full bg-gray-300 flex flex-row justify-center chevron_down"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 flex flex-col">
+          <div class="flex flex-row justify-around mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span>60</span>
+          </div>
+          <div class="flex flex-row justify-around">
+            <span class="text-sm">وضعیت</span>
+            <% if(user.answerDataNEOFFI.length > 0){ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-bookgram-green"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } else{ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse md:w-1/2 w-3/4 bg-gray-100 p-3 mx-auto">
+        <div class="flex flex-col w-4/5">
+          <div class="flex flex-row justify-end">
+            <h1 class="text-lg font-bold">
+              <a href="/tests/NEOPIR">NEOPIR آزمون</a>
+            </h1>
+          </div>
+          <div class="flex flex-col w-full">
+            <div class="chevroni" style="direction: rtl">
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+            </div>
+            <div
+              class="w-full bg-gray-300 flex flex-row justify-center chevron_down"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 flex flex-col">
+          <div class="flex flex-row justify-around mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span>240</span>
+          </div>
+          <div class="flex flex-row justify-around">
+            <span class="text-sm">وضعیت</span>
+            <% if(user.answerDataNEOPIR.length > 0){ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-bookgram-green"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } else{ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse md:w-1/2 w-3/4 bg-gray-100 p-3 mx-auto">
+        <div class="flex flex-col w-4/5">
+          <div class="flex flex-row justify-end">
+            <h1 class="text-lg font-bold">
+              <a href="/tests/pwb">PWB آزمون</a>
+            </h1>
+          </div>
+          <div class="flex flex-col w-full">
+            <div class="chevroni" style="direction: rtl">
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+              در آزمون شخصیت ما شرکت کنید و شرحی "دقیق و باورنکردنی" از خودتان و
+              دلیل اینکه چرا کارها را به شیوه خودتان انجام می‌دهید دریافت کنید.
+            </div>
+            <div
+              class="w-full bg-gray-300 flex flex-row justify-center chevron_down"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 flex flex-col">
+          <div class="flex flex-row justify-around mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span>84</span>
+          </div>
+          <div class="flex flex-row justify-around">
+            <span class="text-sm">وضعیت</span>
+            <% if(user.answerDataPWB.length > 0){ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-bookgram-green"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } else{ %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 stroke-current text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('templatetest'); -%>
+</div>
 
 <script>
-  sessionStorage.setItem(
-    "userId",
-    document.querySelector(".privateP").innerHTML
-  );
-</script> -->
+  const chevron_downs = document.querySelectorAll(".chevron_down");
+
+  chevron_downs.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      e.preventDefault();
+      element.previousElementSibling.classList.toggle("chevroni");
+    });
+  });
+</script>

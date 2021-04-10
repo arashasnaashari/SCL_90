@@ -1,44 +1,68 @@
-<%- include('templatetest'); -%>
+<div class="flex flex-row w-full h-full">
+  <div
+    class="md:w-5/6 bg-gray-200 mx-auto md:mx-0 h-screen w-full flex items-center content-center"
+  >
+    <% if(user.answerDataCT.length > 0){ %>
+    <script>
+      window.location.assign("/dashboard");
+    </script>
+    <% } else{ %> <% null %> <% } %>
+    <div id="test-container">
+      <div id="test" class="justify-center flex-column">
+        <div class="question-container">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-12 w-12"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+            />
+          </svg>
+          <h2 id="total-questions">/60</h2>
+          <h2 id="question-number">1</h2>
+          <p id="question">متن پرسش</p>
+        </div>
 
-<body>
-  <!-- <header class="header"></header> -->
-  <% if(user.answerDataCT.length > 0){ %>
-  <script>
-    window.location.assign("/dashboard");
-  </script>
-  <% } else{ %> <% null %> <% } %>
-  <div class="container" id="test-container">
-    <div id="test" class="justify-center flex-column">
-      <div class="question-container">
-        <i style="font-size: 2.8rem; margin: 0.5rem" class="fa">&#xf022;</i>
-        <h2 id="total-questions">/60</h2>
-        <h2 id="question-number">1</h2>
-        <h2 id="question">متن پرسش</h2>
-      </div>
-
-      <div class="choice-container">
-        <p class="choice-prefix">1</p>
-        <p class="choice-text" data-number="1" id="choice1"></p>
-      </div>
-      <div class="choice-container">
-        <p class="choice-prefix">2</p>
-        <p class="choice-text" data-number="2" id="choice2"></p>
-      </div>
-      <div class="choice-container">
-        <p class="choice-prefix">3</p>
-        <p class="choice-text" data-number="3" id="choice3"></p>
-      </div>
-      <div id="bottomLine">
-        <button class="btn" id="previousQuestionBtn">سؤال قبل</button>
-        <div id="progressBar">
-          <div id="progressBarFull"></div>
+        <div class="choice-container">
+          <p class="choice-prefix">1</p>
+          <p class="choice-text" data-number="1" id="choice1"></p>
+        </div>
+        <div class="choice-container">
+          <p class="choice-prefix">2</p>
+          <p class="choice-text" data-number="2" id="choice2"></p>
+        </div>
+        <div class="choice-container">
+          <p class="choice-prefix">3</p>
+          <p class="choice-text" data-number="3" id="choice3"></p>
+        </div>
+        <div id="bottomLine">
+          <button class="btn" id="previousQuestionBtn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mx-auto"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"
+              />
+            </svg>
+          </button>
+          <div id="progressBar">
+            <div id="progressBarFull"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <%- include('templatetest'); -%>
+</div>
 
-  <!-- <footer class="footer"></footer>-->
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="../public/script/CT.js"></script>
-</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../public/script/CT.js"></script>

@@ -17,5 +17,12 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
 });
 //Admin
 router.get("/admin", ensureAdmin, (req, res) => res.render("admin"));
+//setting
+
+router.get("/dashboard/setting", ensureAuthenticated, (req, res) => {
+  res.render("setting", {
+    user: req.user,
+  });
+});
 
 module.exports = router;
